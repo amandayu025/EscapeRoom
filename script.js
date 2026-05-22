@@ -9,8 +9,6 @@ let inventorySlots = [];
 let WALL= document.getElementById("wall");
 let INVENTORY= document.getElementById("inventory");
 let ALL=document.getElementById("all");
-let CDOOR_LEFT = document.getElementById("cdoor-left");
-let CDOOR_RIGHT = document.getElementById("cdoor-right");
 let NOTE_INVENTORY;
 let NOTE_ZOOM;
 let RECEIPT_INVENTORY;
@@ -73,8 +71,8 @@ function go_wall() {
             close_image(RECEIPT_ZOOM)
         });
     } else if (current_wall == wall2) {
-        wall.style.backgroundImage = "url('images/cabinet_wall.png')";
-        wall.innerHTML = `
+        WALL.style.backgroundImage = "url('images/cabinet_wall.png')";
+        WALL.innerHTML = `
             <button id="cdoor-left-closed" onclick='open_close_cabinet("left")'></button>
             <button id="cdoor-right-closed" onclick='open_close_cabinet("right")'></button>
         `;
@@ -82,11 +80,11 @@ function go_wall() {
         itemImageBackground=document.createElement("div");
         itemImageBackground.id="image-background";
 
-        cabinet_left=0;
-        cabinet_right=0;
+        cabinet_left= 2;
+        cabinet_right= 2;
     } else if (current_wall == wall3) {
-        wall.style.backgroundImage = "url('images/tv_wall.png')";
-        wall.innerHTML = `
+        WALL.style.backgroundImage = "url('images/tv_wall.png')";
+        WALL.innerHTML = `
             <button id="tv-screen" onclick='turn_on_tv()'></button>
             <button id="key" onclick='add_inventory(KEY_INVENTORY)'></button>
         `;
@@ -98,8 +96,8 @@ function go_wall() {
         
         tv=0;
     } else if (current_wall == wall4) {
-        wall.style.backgroundImage = "url('images/door_wall.png')";
-        wall.innerHTML = `
+        WALL.style.backgroundImage = "url('images/door_wall.png')";
+        WALL.innerHTML = `
             <button id="curtain" onclick='open_curtain()'></button>
         `;
         curtain=0;
@@ -173,11 +171,24 @@ function open_close_cabinet(side){
         }
         else if(cabinet_right==0){
             document.getElementById("cdoor-right-closed").style.display="none";
+            document.getElementById("cdoor-right-open").style.display="block";
+            document.getElementById("notebook").style.display="block";
             cabinet_right=1;
-            wall.innerHTML=`
-                <button id="cdoor-right-open" onclick='open_close_cabinet("right")></button>
-                <button id="notebook" onclick='add_inventory(NOTEBOOK_INVENTORY)'></button>
-            `;
+        }
+        else if(cabinet_right==2){
+            document.getElementById("cdoor-right-closed").style.display="none";
+            
+            let CDOOR_RIGHT_OPEN=document.createElement("button");
+            CDOOR_RIGHT_OPEN.id="cdoor-right-open";
+            CDOOR_RIGHT_OPEN.onclick=()=>open_close_cabinet("right");
+
+            let NOTEBOOK=document.createElement("button");
+            NOTEBOOK.id="notebook";
+            NOTEBOOK.onclick=()=>add_inventory(NOTEBOOK_INVENTORY);
+
+            WALL.appendChild(CDOOR_RIGHT_OPEN);
+            WALL.appendChild(NOTEBOOK);
+            cabinet_right=1;
             
              //create all divs and its ids
             itemImageBackground=document.createElement("div");
@@ -189,12 +200,31 @@ function open_close_cabinet(side){
     else if(side == "left"){
         if(bag.includes(KEY_INVENTORY)){
             if(cabinet_left==1){
-                document.getElementById("cdoor-left").style.backgroundImage="url('images/cdoor_left_closed.png')";
+                document.getElementById("cdoor-left-closed").style.display="block";
+                document.getElementById("cdoor-left-open").style.display="none";
+                document.getElementById("notebook").style.display="none";
                 cabinet_left=0;
+                
             }
             else if(cabinet_left==0){
-                document.getElementById("cdoor-left").style.backgroundImage="url('images/cdoor_left_open.png')";
+                document.getElementById("cdoor-left-closed").style.display="none";
+                document.getElementById("cdoor-left-open").style.display="block";
+                document.getElementById("notebook").style.display="block";
                 cabinet_left=1;
+            }
+            else if(cabinet_left==2){
+                document.getElementById("cdoor-left-closed").style.display="none";
+                cabinet_left=1;
+                
+                let CDOOR_LEFT_OPEN=document.createElement("button");
+                CDOOR_LEFT_OPEN.id="cdoor-left-open";
+                CDOOR_LEFT_OPEN.onclick=()=>open_close_cabinet("left");
+
+                WALL.appendChild(CDOOR_LEFT_OPEN);
+
+                //create all divs and its ids
+                itemImageBackground=document.createElement("div");
+                itemImageBackground.id="image-background";
             }
         }
         else if (!bag.includes(KEY_INVENTORY)){

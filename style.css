@@ -205,10 +205,10 @@ body{
     background: transparent;
     border: none;
     background-image: url("images/cdoor_left_closed.png");
+    cursor: pointer;
     position: absolute;
     top:330px;
     left:260px;
-    cursor: pointer;
 }
 #cdoor-right-closed{
     width: 205px;
@@ -216,32 +216,32 @@ body{
     background: transparent;
     border: none;
     background-image: url("images/cdoor_right_closed.png");
-    top:330px;
-    left:470px;
     cursor: pointer;
     position: absolute;
+    top:330px;
+    left:470px;
 }
 #cdoor-left-open{
-    width: 205px;
+    width: 29px;
     height: 135px;
     background: transparent;
     border: none;
     background-image: url("images/cdoor_left_open.png");
+    cursor: pointer;
     position: absolute;
     top:330px;
     left:260px;
-    cursor: pointer;
 }
 #cdoor-right-open{
-    width: 205px;
+    width: 29px;
     height: 135px;
     background: transparent;
     border: none;
     background-image: url("images/cdoor_right_open.png");
-    top:330px;
-    left:470px;
     cursor: pointer;
     position: absolute;
+    top:330px;
+    left:640px;
 }
 #key{
     width: 32px;
@@ -295,6 +295,17 @@ body{
     border:none;
     cursor:pointer;
     position: absolute;
-    top:100px;
-    left:50px;
+    top:428px;
+    left:540px;
+}
+#notebook-inventory{
+    transform: scale(1.5);
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    background-image: url("images/math_homework.png");
+    border: none;
+    position: absolute;
+    margin: 13px;
+    cursor: pointer;
 }
