@@ -178,8 +178,8 @@ body{
     border: none;
     cursor: pointer;
     position: absolute;
-    top: 370px;
-    left: 400px;
+    top: 425px;
+    left: 370px;
 }
 #receipt-inventory{
     transform: scale(1.5);

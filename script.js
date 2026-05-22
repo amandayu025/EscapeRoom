@@ -42,7 +42,6 @@ function go_wall() {
         WALL.style.backgroundImage = "url('images/sofa_wall.png')";
         WALL.innerHTML = `
             <button id='note' onclick='add_inventory(NOTE_INVENTORY)'></button>
-            <button id='receipt' onclick='add_inventory(RECEIPT_INVENTORY)'></button>
         `;
         //create all divs and its ids
         itemImageBackground=document.createElement("div");
@@ -51,10 +50,6 @@ function go_wall() {
         NOTE_INVENTORY.id="note-inventory";
         NOTE_ZOOM=document.createElement("div");
         NOTE_ZOOM.id="note-zoom";
-        RECEIPT_INVENTORY=document.createElement("div");
-        RECEIPT_INVENTORY.id="receipt-inventory";
-        RECEIPT_ZOOM=document.createElement("div");
-        RECEIPT_ZOOM.id="receipt-zoom";
 
         //note item in the inventory
         NOTE_INVENTORY.addEventListener('click',()=>{
@@ -63,13 +58,7 @@ function go_wall() {
         itemImageBackground.addEventListener('click',()=>{
             close_image(NOTE_ZOOM)
         });
-        //receipt item in the inventory
-        RECEIPT_INVENTORY.addEventListener('click',()=>{
-            open_image(RECEIPT_ZOOM)
-        });
-        itemImageBackground.addEventListener('click',()=>{
-            close_image(RECEIPT_ZOOM)
-        });
+        
     } else if (current_wall == wall2) {
         WALL.style.backgroundImage = "url('images/cabinet_wall.png')";
         WALL.innerHTML = `
@@ -177,7 +166,7 @@ function open_close_cabinet(side){
         }
         else if(cabinet_right==2){
             document.getElementById("cdoor-right-closed").style.display="none";
-            
+
             let CDOOR_RIGHT_OPEN=document.createElement("button");
             CDOOR_RIGHT_OPEN.id="cdoor-right-open";
             CDOOR_RIGHT_OPEN.onclick=()=>open_close_cabinet("right");
@@ -202,14 +191,14 @@ function open_close_cabinet(side){
             if(cabinet_left==1){
                 document.getElementById("cdoor-left-closed").style.display="block";
                 document.getElementById("cdoor-left-open").style.display="none";
-                document.getElementById("notebook").style.display="none";
+                document.getElementById("receipt").style.display="none";
                 cabinet_left=0;
                 
             }
             else if(cabinet_left==0){
                 document.getElementById("cdoor-left-closed").style.display="none";
                 document.getElementById("cdoor-left-open").style.display="block";
-                document.getElementById("notebook").style.display="block";
+                document.getElementById("receipt").style.display="block";
                 cabinet_left=1;
             }
             else if(cabinet_left==2){
@@ -220,11 +209,28 @@ function open_close_cabinet(side){
                 CDOOR_LEFT_OPEN.id="cdoor-left-open";
                 CDOOR_LEFT_OPEN.onclick=()=>open_close_cabinet("left");
 
+                let RECEIPT=document.createElement("button");
+                RECEIPT.id="receipt";
+                RECEIPT.onclick=()=>add_inventory(RECEIPT_INVENTORY);
+
                 WALL.appendChild(CDOOR_LEFT_OPEN);
+                WALL.appendChild(RECEIPT);
 
                 //create all divs and its ids
                 itemImageBackground=document.createElement("div");
                 itemImageBackground.id="image-background";
+                RECEIPT_INVENTORY=document.createElement("div");
+                RECEIPT_INVENTORY.id="receipt-inventory";
+                RECEIPT_ZOOM=document.createElement("div");
+                RECEIPT_ZOOM.id="receipt-zoom";
+
+                //receipt item in the inventory
+                RECEIPT_INVENTORY.addEventListener('click',()=>{
+                    open_image(RECEIPT_ZOOM)
+                });
+                itemImageBackground.addEventListener('click',()=>{
+                    close_image(RECEIPT_ZOOM)
+                });
             }
         }
         else if (!bag.includes(KEY_INVENTORY)){
