@@ -169,7 +169,7 @@ function change_wall_left() {
 }
 function add_inventory(itemElement) {
     if(bag.length>=INVENTORY_SLOT_COUNT){
-        window.alert("Inventory full!");
+        alert("Inventory full!");
         return;
     }
     if(bag.includes(itemElement)){
@@ -303,7 +303,7 @@ function open_close_cabinet(side){
             }
         }
         else if (!bag.includes(KEY_INVENTORY)){
-            window.alert("It is locked!");
+            alert("It is locked!");
         }
         
     }
@@ -337,10 +337,10 @@ function clear_display(){
 function enter_code(){
     code=document.getElementById("display").value;
     if(code==9564){
-        window.alert("Congrats! You Escaped!");
+        alert("Congrats! You Escaped!");
     }
     else{
-        window.alert("The code is wrong!");
+        alert("The code is wrong!");
     }
 }
 // Dedicated initialization function for clarity
