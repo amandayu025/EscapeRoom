@@ -19,25 +19,26 @@ let NOTEBOOK_ZOOM;
 let CODE_ZOOM=document.createElement("div");
     CODE_ZOOM.id="code-zoom";
     CODE_ZOOM.innerHTML=`
-        <div id="display"></div>
+        <input type="text" id="display" disabled>
         <div>
-            <button onclick="add('1')">1</button>
-            <button onclick="add('1')">2</button>
-            <button onclick="add('1')">3</button>
+            <button class="code-button" onclick="add('1')">1</button>
+            <button class="code-button" onclick="add('2')">2</button>
+            <button class="code-button" onclick="add('3')">3</button>
         </div>
         <div>
-            <button onclick="add('1')">4</button>
-            <button onclick="add('1')">5</button>
-            <button onclick="add('1')">6</button>
+            <button class="code-button" onclick="add('4')">4</button>
+            <button class="code-button" onclick="add('5')">5</button>
+            <button class="code-button" onclick="add('6')">6</button>
         </div>
         <div>
-            <button onclick="add('1')">7</button>
-            <button onclick="add('1')">8</button>
-            <button onclick="add('1')">9</button>
+            <button class="code-button" onclick="add('7')">7</button>
+            <button class="code-button" onclick="add('8')">8</button>
+            <button class="code-button" onclick="add('9')">9</button>
         </div>
         <div>
-            <button onclick="add('1')">0</button>
-            <button onclick="clear_display()">Clear</button>
+            <button class="code-button" onclick="enter_code()">Enter</button>
+            <button class="code-button" onclick="add('0')">0</button>
+            <button class="code-button" onclick="clear_display()">Clear</button>
         </div>
     `;
 
@@ -78,11 +79,18 @@ function go_wall() {
         NOTE_ZOOM.id="note-zoom";
 
         //note item in the inventory
-        NOTE_INVENTORY.addEventListener('click',()=>{
-            open_image(NOTE_ZOOM)
-        });
-        itemImageBackground.addEventListener('click',()=>{
-            close_image(NOTE_ZOOM)
+        NOTE_INVENTORY.addEventListener('click', () => {
+
+            if(!NOTE_ZOOM.parentNode){
+                initialize_image(NOTE_ZOOM);
+
+                itemImageBackground.addEventListener('click', () => {
+                    close_image(NOTE_ZOOM);
+                });
+            }
+
+            open_image(NOTE_ZOOM);
+
         });
         
     } else if (current_wall == wall2) {
@@ -114,16 +122,23 @@ function go_wall() {
         WALL.style.backgroundImage = "url('images/door_wall.png')";
         WALL.innerHTML = `
             <button id="curtain" onclick='open_curtain()'></button>
-            <button id="code" onclick='enter_code()'></button> 
+            <button id="code"></button> 
             `;
         curtain=0;
         
-        document.getElementById("code").addEventListener('click',()=>{
-            open_image(CODE_ZOOM)
-        });
-        itemImageBackground.addEventListener('click',()=>{
-            close_image(CODE_ZOOM)
-        });
+        document.getElementById("code").onclick= () => {
+
+            if(!CODE_ZOOM.parentNode){
+                initialize_image(CODE_ZOOM);
+
+                itemImageBackground.addEventListener('click', () => {
+                    close_image(CODE_ZOOM);
+                });
+            }
+
+            open_image(CODE_ZOOM);
+
+        };
     }
 }
 
@@ -169,15 +184,17 @@ function render_inventory(){
         inventorySlots[index].appendChild(itemElement);
     })
 }
+function initialize_image(itemImage){
+    ALL.appendChild(itemImageBackground);
+    ALL.appendChild(itemImage); 
+}
 function open_image(itemImage){
-        ALL.appendChild(itemImageBackground);
-        ALL.appendChild(itemImage);
-        visibility=1; 
+    itemImage.style.display="block";
+    itemImageBackground.style.display="block"; 
 }
 function close_image(itemImage){
     itemImage.style.display="none";
     itemImageBackground.style.display="none";
-    visibility=0;
 }
 function open_close_cabinet(side){
     if(side == "right"){
@@ -217,13 +234,19 @@ function open_close_cabinet(side){
             NOTEBOOK_ZOOM=document.createElement("div");
             NOTEBOOK_ZOOM.id="notebook-zoom";
 
+            NOTEBOOK_INVENTORY.addEventListener('click', () => {
 
-            NOTEBOOK_INVENTORY.addEventListener('click',()=>{
-                open_image(NOTEBOOK_ZOOM)
-            });
-            itemImageBackground.addEventListener('click',()=>{
-                close_image(NOTEBOOK_ZOOM)
-            });
+            if(!NOTEBOOK_ZOOM.parentNode){
+                initialize_image(NOTEBOOK_ZOOM);
+
+                itemImageBackground.addEventListener('click', () => {
+                    close_image(NOTEBOOK_ZOOM);
+                });
+            }
+
+            open_image(NOTEBOOK_ZOOM);
+
+        });
         }
     }
     else if(side == "left"){
@@ -264,12 +287,18 @@ function open_close_cabinet(side){
                 RECEIPT_ZOOM=document.createElement("div");
                 RECEIPT_ZOOM.id="receipt-zoom";
 
-                //receipt item in the inventory
-                RECEIPT_INVENTORY.addEventListener('click',()=>{
-                    open_image(RECEIPT_ZOOM)
-                });
-                itemImageBackground.addEventListener('click',()=>{
-                    close_image(RECEIPT_ZOOM)
+                RECEIPT_INVENTORY.addEventListener('click', () => {
+
+                    if(!RECEIPT_ZOOM.parentNode){
+                        initialize_image(RECEIPT_ZOOM);
+
+                        itemImageBackground.addEventListener('click', () => {
+                            close_image(RECEIPT_ZOOM);
+                        });
+                    }
+
+                    open_image(RECEIPT_ZOOM);
+
                 });
             }
         }
@@ -305,7 +334,7 @@ function add(val){
 function clear_display(){
     document.getElementById("display").value="";
 }
-function enter(){
+function enter_code(){
     code=document.getElementById("display").value;
     if(code==9564){
         window.alert("Congrats! You Escaped!");
@@ -319,7 +348,6 @@ function initializeGame() {
     current_wall = 1;
     go_wall();
 }
-
 
 // Call initialization function
 initializeGame();
