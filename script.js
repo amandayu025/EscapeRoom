@@ -15,6 +15,31 @@ let RECEIPT_INVENTORY;
 let RECEIPT_ZOOM;
 let KEY_INVENTORY;
 let NOTEBOOK_INVENTORY;
+let NOTEBOOK_ZOOM;
+let CODE_ZOOM=document.createElement("div");
+    CODE_ZOOM.id="code-zoom";
+    CODE_ZOOM.innerHTML=`
+        <div id="display"></div>
+        <div>
+            <button onclick="add('1')">1</button>
+            <button onclick="add('1')">2</button>
+            <button onclick="add('1')">3</button>
+        </div>
+        <div>
+            <button onclick="add('1')">4</button>
+            <button onclick="add('1')">5</button>
+            <button onclick="add('1')">6</button>
+        </div>
+        <div>
+            <button onclick="add('1')">7</button>
+            <button onclick="add('1')">8</button>
+            <button onclick="add('1')">9</button>
+        </div>
+        <div>
+            <button onclick="add('1')">0</button>
+            <button onclick="clear_display()">Clear</button>
+        </div>
+    `;
 
 const INVENTORY_SLOT_COUNT = 14;
 
@@ -36,6 +61,7 @@ let cabinet_left;
 let cabinet_right;
 let tv;
 let curtain;
+let code;
 
 function go_wall() {
     if (current_wall == wall1) {
@@ -88,8 +114,16 @@ function go_wall() {
         WALL.style.backgroundImage = "url('images/door_wall.png')";
         WALL.innerHTML = `
             <button id="curtain" onclick='open_curtain()'></button>
-        `;
+            <button id="code" onclick='enter_code()'></button> 
+            `;
         curtain=0;
+        
+        document.getElementById("code").addEventListener('click',()=>{
+            open_image(CODE_ZOOM)
+        });
+        itemImageBackground.addEventListener('click',()=>{
+            close_image(CODE_ZOOM)
+        });
     }
 }
 
@@ -136,10 +170,6 @@ function render_inventory(){
     })
 }
 function open_image(itemImage){
-    if(visibility===0){
-        itemImage.style.display="block";
-        itemImageBackground.style.display="block";
-    }
         ALL.appendChild(itemImageBackground);
         ALL.appendChild(itemImage);
         visibility=1; 
@@ -184,6 +214,16 @@ function open_close_cabinet(side){
             itemImageBackground.id="image-background";
             NOTEBOOK_INVENTORY=document.createElement("div");
             NOTEBOOK_INVENTORY.id="notebook-inventory";
+            NOTEBOOK_ZOOM=document.createElement("div");
+            NOTEBOOK_ZOOM.id="notebook-zoom";
+
+
+            NOTEBOOK_INVENTORY.addEventListener('click',()=>{
+                open_image(NOTEBOOK_ZOOM)
+            });
+            itemImageBackground.addEventListener('click',()=>{
+                close_image(NOTEBOOK_ZOOM)
+            });
         }
     }
     else if(side == "left"){
@@ -257,6 +297,21 @@ function open_curtain(){
     else if(curtain==1){
         document.getElementById("curtain").style.backgroundImage="url('images/curtain_close.png')";
         curtain=0;
+    }
+}
+function add(val){
+    document.getElementById("display").value+=val;
+}
+function clear_display(){
+    document.getElementById("display").value="";
+}
+function enter(){
+    code=document.getElementById("display").value;
+    if(code==9564){
+        window.alert("Congrats! You Escaped!");
+    }
+    else{
+        window.alert("The code is wrong!");
     }
 }
 // Dedicated initialization function for clarity

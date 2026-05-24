@@ -155,7 +155,7 @@ body{
     cursor: pointer;
 }
 #note-zoom{
-    background-image: url("images/caesar_cipher.png");
+    background-image: url("images/note_zoom.png");
     width: 450px;
     height:580px;
     position: absolute;
@@ -193,7 +193,7 @@ body{
     cursor: pointer;
 }
 #receipt-zoom{
-    background-color: rgb(235, 226, 171);
+    background-image: url("images/receipt_zoom.png");
     width: 450px;
     height:580px;
     position: absolute;
@@ -307,5 +307,22 @@ body{
     border: none;
     position: absolute;
     margin: 13px;
+    cursor: pointer;
+}
+#notebook-zoom{
+    background-image: url("images/math_homework_zoom.png");
+    width: 450px;
+    height:580px;
+    position: absolute;
+    left:250px;
+}
+#code{
+    background-image: url("images/code.png");
+    width:80px;
+    height:100px;
+    border:none;
+    position: absolute;
+    top:240px;
+    left:310px;
     cursor: pointer;
 }
