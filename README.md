@@ -42,8 +42,8 @@ When clicking on the TV, it will turn on and open a weather channel, that is gon
 
 <img width="800" height="500" alt="fourth wall" src="images/fourth_wall.png">
 
-At the last one, there's the exit door, the digital lock and a window that will contain the last clue.
-The code is 9564.
+At the last one, there's the exit door, the digital lock and a window that will contain the last clue. <br>
+(The code is 9564)
 
 <img width="400" height="300" alt="enter the code" src="images/enter_code.png">  <img width="400" height="300" alt="fourth clue" src="images/clue_wall4.png">
 
