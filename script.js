@@ -16,7 +16,7 @@ let RECEIPT_ZOOM;
 let KEY_INVENTORY;
 let NOTEBOOK_INVENTORY;
 let NOTEBOOK_ZOOM;
-let CODE_ZOOM;/*=document.createElement("div");
+let CODE_ZOOM=document.createElement("div");
     CODE_ZOOM.id="code-zoom";
     CODE_ZOOM.innerHTML=`
         <input type="text" id="display" disabled>
@@ -40,8 +40,8 @@ let CODE_ZOOM;/*=document.createElement("div");
             <button class="code-button" onclick="add('0')">0</button>
             <button class="code-button" onclick="clear_display()">Clear</button>
         </div>
-    `;*/
-
+    `;
+let CODE;
 const INVENTORY_SLOT_COUNT = 14;
 
 for (let idx = 0; idx < INVENTORY_SLOT_COUNT; idx++) {
@@ -55,7 +55,8 @@ let wall3 = 3;
 let wall4 = 4;
 let current_wall;
 let itemName;
-let itemImageBackground;
+let itemImageBackground=document.createElement("div");
+    itemImageBackground.id="image-background";
 let visibility;
 let cabinet_left;
 let cabinet_right;
@@ -70,15 +71,14 @@ function go_wall() {
             <button id='note' onclick='add_inventory(NOTE_INVENTORY)'></button>
         `;
         //create all divs and its ids
-        itemImageBackground=document.createElement("div");
-        itemImageBackground.id="image-background";
         NOTE_INVENTORY=document.createElement("div");
         NOTE_INVENTORY.id="note-inventory";
         NOTE_ZOOM=document.createElement("div");
         NOTE_ZOOM.id="note-zoom";
 
+        image(NOTE_INVENTORY, NOTE_ZOOM);
         //note item in the inventory
-        NOTE_INVENTORY.addEventListener('click', () => {
+        /*NOTE_INVENTORY.addEventListener('click', () => {
 
             if(!NOTE_ZOOM.parentNode){
                 initialize_image(NOTE_ZOOM);
@@ -90,7 +90,7 @@ function go_wall() {
 
             open_image(NOTE_ZOOM);
 
-        });
+        });*/
         
     } else if (current_wall == wall2) {
         WALL.style.backgroundImage = "url('images/cabinet_wall.png')";
@@ -108,8 +108,6 @@ function go_wall() {
             <button id="key" onclick='add_inventory(KEY_INVENTORY)'></button>
         `;
         //create all divs and its ids
-        itemImageBackground=document.createElement("div");
-        itemImageBackground.id="image-background";
         KEY_INVENTORY=document.createElement("div");
         KEY_INVENTORY.id="key-inventory";
         
@@ -121,37 +119,12 @@ function go_wall() {
             <button id="code"></button> 
             `;
         curtain=0;
-        itemImageBackground=document.createElement("div");
-        itemImageBackground.id="image-background";
+        CODE=document.getElementById("code");
         
-        document.getElementById("code").onclick= () => {
+        image(CODE,CODE_ZOOM);
+        /*document.getElementById("code").onclick= () => {
 
             if(!CODE_ZOOM.parentNode){
-                CODE_ZOOM=document.createElement("div");
-                CODE_ZOOM.id="code-zoom";
-                CODE_ZOOM.innerHTML=`
-                    <input type="text" id="display" disabled>
-                    <div>
-                        <button class="code-button" onclick="add('1')">1</button>
-                        <button class="code-button" onclick="add('2')">2</button>
-                        <button class="code-button" onclick="add('3')">3</button>
-                    </div>
-                    <div>
-                        <button class="code-button" onclick="add('4')">4</button>
-                        <button class="code-button" onclick="add('5')">5</button>
-                        <button class="code-button" onclick="add('6')">6</button>
-                    </div>
-                    <div>
-                        <button class="code-button" onclick="add('7')">7</button>
-                        <button class="code-button" onclick="add('8')">8</button>
-                        <button class="code-button" onclick="add('9')">9</button>
-                    </div>
-                    <div>
-                        <button class="code-button" onclick="enter_code()">Enter</button>
-                        <button class="code-button" onclick="add('0')">0</button>
-                        <button class="code-button" onclick="clear_display()">Clear</button>
-                    </div>
-                `;
                 initialize_image(CODE_ZOOM);
 
                 itemImageBackground.addEventListener('click', () => {
@@ -161,7 +134,7 @@ function go_wall() {
 
             open_image(CODE_ZOOM);
 
-        };
+        };*/
     }
 }
 
@@ -208,16 +181,31 @@ function render_inventory(){
     })
 }
 function initialize_image(itemImage){
-    ALL.appendChild(itemImageBackground);
     ALL.appendChild(itemImage); 
+    ALL.appendChild(itemImageBackground);
 }
 function open_image(itemImage){
+    itemImageBackground.style.display="block";
     itemImage.style.display="block";
-    itemImageBackground.style.display="block"; 
 }
 function close_image(itemImage){
-    itemImage.style.display="none";
     itemImageBackground.style.display="none";
+    itemImage.style.display="none";
+}
+function image(imageName,itemImage){
+    imageName.addEventListener('click', () => {
+        if(!itemImage.parentNode){
+            initialize_image(itemImage);
+            if(itemImageBackground.style.display="block"){
+                itemImageBackground.style.display="none";
+            }
+            itemImageBackground.addEventListener('click', () => {
+                close_image(itemImage);
+            });
+        }
+
+        open_image(itemImage);
+    });
 }
 function open_close_cabinet(side){
     if(side == "right"){
@@ -250,14 +238,13 @@ function open_close_cabinet(side){
             cabinet_right=1;
             
              //create all divs and its ids
-            itemImageBackground=document.createElement("div");
-            itemImageBackground.id="image-background";
             NOTEBOOK_INVENTORY=document.createElement("div");
             NOTEBOOK_INVENTORY.id="notebook-inventory";
             NOTEBOOK_ZOOM=document.createElement("div");
             NOTEBOOK_ZOOM.id="notebook-zoom";
 
-            NOTEBOOK_INVENTORY.addEventListener('click', () => {
+            image(NOTEBOOK_INVENTORY, NOTEBOOK_ZOOM);
+            /*NOTEBOOK_INVENTORY.addEventListener('click', () => {
 
             if(!NOTEBOOK_ZOOM.parentNode){
                 initialize_image(NOTEBOOK_ZOOM);
@@ -269,7 +256,7 @@ function open_close_cabinet(side){
 
             open_image(NOTEBOOK_ZOOM);
 
-        });
+        });*/
         }
     }
     else if(side == "left"){
@@ -303,14 +290,13 @@ function open_close_cabinet(side){
                 WALL.appendChild(RECEIPT);
 
                 //create all divs and its ids
-                itemImageBackground=document.createElement("div");
-                itemImageBackground.id="image-background";
                 RECEIPT_INVENTORY=document.createElement("div");
                 RECEIPT_INVENTORY.id="receipt-inventory";
                 RECEIPT_ZOOM=document.createElement("div");
                 RECEIPT_ZOOM.id="receipt-zoom";
 
-                RECEIPT_INVENTORY.addEventListener('click', () => {
+                image(RECEIPT_INVENTORY, RECEIPT_ZOOM);
+                /*RECEIPT_INVENTORY.addEventListener('click', () => {
 
                     if(!RECEIPT_ZOOM.parentNode){
                         initialize_image(RECEIPT_ZOOM);
@@ -322,7 +308,7 @@ function open_close_cabinet(side){
 
                     open_image(RECEIPT_ZOOM);
 
-                });
+                });*/
             }
         }
         else if (!bag.includes(KEY_INVENTORY)){
