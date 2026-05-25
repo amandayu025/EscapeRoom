@@ -132,9 +132,9 @@ function go_wall() {
             if(!CODE_ZOOM.parentNode){
                 initialize_image(CODE_ZOOM);
 
-                itemImageBackground.addEventListener('click', () => {
+                itemImageBackground.addEventListener.onclick = () => {
                     close_image(CODE_ZOOM);
-                });
+                };
             }
 
             open_image(CODE_ZOOM);
