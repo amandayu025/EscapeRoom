@@ -55,8 +55,7 @@ let wall3 = 3;
 let wall4 = 4;
 let current_wall;
 let itemName;
-let itemImageBackground=document.createElement("div");
-    itemImageBackground.id="image-background";
+let itemImageBackground;
 let visibility;
 let cabinet_left;
 let cabinet_right;
@@ -71,6 +70,8 @@ function go_wall() {
             <button id='note' onclick='add_inventory(NOTE_INVENTORY)'></button>
         `;
         //create all divs and its ids
+        itemImageBackground=document.createElement("div");
+        itemImageBackground.id="image-background";
         NOTE_INVENTORY=document.createElement("div");
         NOTE_INVENTORY.id="note-inventory";
         NOTE_ZOOM=document.createElement("div");
@@ -107,6 +108,8 @@ function go_wall() {
             <button id="key" onclick='add_inventory(KEY_INVENTORY)'></button>
         `;
         //create all divs and its ids
+        itemImageBackground=document.createElement("div");
+        itemImageBackground.id="image-background";
         KEY_INVENTORY=document.createElement("div");
         KEY_INVENTORY.id="key-inventory";
         
@@ -118,15 +121,17 @@ function go_wall() {
             <button id="code"></button> 
             `;
         curtain=0;
+        itemImageBackground=document.createElement("div");
+        itemImageBackground.id="image-background";
         
         document.getElementById("code").onclick= () => {
 
             if(!CODE_ZOOM.parentNode){
                 initialize_image(CODE_ZOOM);
 
-                itemImageBackground.addEventListener.onclick = () => {
+                itemImageBackground.addEventListener('click', () => {
                     close_image(CODE_ZOOM);
-                };
+                });
             }
 
             open_image(CODE_ZOOM);
@@ -220,6 +225,8 @@ function open_close_cabinet(side){
             cabinet_right=1;
             
              //create all divs and its ids
+            itemImageBackground=document.createElement("div");
+            itemImageBackground.id="image-background";
             NOTEBOOK_INVENTORY=document.createElement("div");
             NOTEBOOK_INVENTORY.id="notebook-inventory";
             NOTEBOOK_ZOOM=document.createElement("div");
@@ -271,6 +278,8 @@ function open_close_cabinet(side){
                 WALL.appendChild(RECEIPT);
 
                 //create all divs and its ids
+                itemImageBackground=document.createElement("div");
+                itemImageBackground.id="image-background";
                 RECEIPT_INVENTORY=document.createElement("div");
                 RECEIPT_INVENTORY.id="receipt-inventory";
                 RECEIPT_ZOOM=document.createElement("div");
