@@ -1,5 +1,7 @@
 # Escape Room
-<video src="images/Video_Project.mp4" controls width="100%"></video>
+
+[<video src="images/Video_Project.mp4" controls width="100%"></video>](https://github.com/user-attachments/assets/2c5faaeb-6750-43da-909c-23107b934b94)
+
 ## Description
 It's a simple escape room web "game" <br>
 It was made with HTML, CSS and JS <br>
