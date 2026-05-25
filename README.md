@@ -46,3 +46,5 @@ At the last one, there's the exit door, the digital lock and a window that will 
 
 <img width="400" height="300" alt="second clue" src="images/enter_code.png"><img width="400" height="300" alt="second clue" src="images/clue_wall4.png">
 
+## AI use
+I used for debbuging and for learn some JS concepts :D
