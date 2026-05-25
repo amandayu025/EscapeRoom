@@ -27,7 +27,7 @@ At the first wall, you will see the "guide" on the table
 
 At this wall, you will see a cabinet that will give you access to two clues, but one of them is locked. (The key for the locked one will be at the Third Wall)
 
-<img width="400" height="300" alt="second clue" src="images/firstclue_wall2.png"> <img width="400" height="300" alt="third clue " src="images/secondclue_wall2.png">
+<img width="400" height="300" alt="second clue" src="images/firstclue_wall2.png">  <img width="400" height="300" alt="third clue " src="images/secondclue_wall2.png">
 
 ### Third Wall
 
@@ -36,7 +36,7 @@ At this wall, you will see a cabinet that will give you access to two clues, but
 At this one, you will see a TV and next to it, there's a key that unlocks the cabinet of the second wall.<br>
 When clicking on the TV, it will turn on and open a weather channel, that is gonna be another clue.
 
-<img width="400" height="300" alt="second clue" src="images/clue_wall3.png"> <img width="400" height="300" alt="third clue " src="images/access_secondclue_wall2.png">
+<img width="400" height="300" alt="second clue" src="images/clue_wall3.png">  <img width="400" height="300" alt="third clue " src="images/access_secondclue_wall2.png">
 
 ### Fourth Wall
 
@@ -44,7 +44,7 @@ When clicking on the TV, it will turn on and open a weather channel, that is gon
 
 At the last one, there's the exit door, the digital lock and a window that will contain the last clue.
 
-<img width="400" height="300" alt="second clue" src="images/enter_code.png"><img width="400" height="300" alt="second clue" src="images/clue_wall4.png">
+<img width="400" height="300" alt="second clue" src="images/enter_code.png">  <img width="400" height="300" alt="second clue" src="images/clue_wall4.png">
 
 ## AI use
 I used for debbuging and for learn some JS concepts :D
