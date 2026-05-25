@@ -16,7 +16,7 @@ let RECEIPT_ZOOM;
 let KEY_INVENTORY;
 let NOTEBOOK_INVENTORY;
 let NOTEBOOK_ZOOM;
-let CODE_ZOOM=document.createElement("div");
+let CODE_ZOOM;/*=document.createElement("div");
     CODE_ZOOM.id="code-zoom";
     CODE_ZOOM.innerHTML=`
         <input type="text" id="display" disabled>
@@ -40,7 +40,7 @@ let CODE_ZOOM=document.createElement("div");
             <button class="code-button" onclick="add('0')">0</button>
             <button class="code-button" onclick="clear_display()">Clear</button>
         </div>
-    `;
+    `;*/
 
 const INVENTORY_SLOT_COUNT = 14;
 
@@ -125,7 +125,31 @@ function go_wall() {
         itemImageBackground.id="image-background";
         
         document.getElementById("code").onclick= () => {
-
+            CODE_ZOOM=document.createElement("div");
+            CODE_ZOOM.id="code-zoom";
+            CODE_ZOOM.innerHTML=`
+                <input type="text" id="display" disabled>
+                <div>
+                    <button class="code-button" onclick="add('1')">1</button>
+                    <button class="code-button" onclick="add('2')">2</button>
+                    <button class="code-button" onclick="add('3')">3</button>
+                </div>
+                <div>
+                    <button class="code-button" onclick="add('4')">4</button>
+                    <button class="code-button" onclick="add('5')">5</button>
+                    <button class="code-button" onclick="add('6')">6</button>
+                </div>
+                <div>
+                    <button class="code-button" onclick="add('7')">7</button>
+                    <button class="code-button" onclick="add('8')">8</button>
+                    <button class="code-button" onclick="add('9')">9</button>
+                </div>
+                <div>
+                    <button class="code-button" onclick="enter_code()">Enter</button>
+                    <button class="code-button" onclick="add('0')">0</button>
+                    <button class="code-button" onclick="clear_display()">Clear</button>
+                </div>
+            `;
             if(!CODE_ZOOM.parentNode){
                 initialize_image(CODE_ZOOM);
 
