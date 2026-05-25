@@ -181,8 +181,8 @@ function render_inventory(){
     })
 }
 function initialize_image(itemImage){
-    ALL.appendChild(itemImage); 
     ALL.appendChild(itemImageBackground);
+    ALL.appendChild(itemImage); 
 }
 function open_image(itemImage){
     itemImageBackground.style.display="block";
