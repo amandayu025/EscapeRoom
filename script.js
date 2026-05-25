@@ -57,7 +57,6 @@ let current_wall;
 let itemName;
 let itemImageBackground=document.createElement("div");
     itemImageBackground.id="image-background";
-let itemImageBackground;
 let visibility;
 let cabinet_left;
 let cabinet_right;
@@ -72,8 +71,6 @@ function go_wall() {
             <button id='note' onclick='add_inventory(NOTE_INVENTORY)'></button>
         `;
         //create all divs and its ids
-        itemImageBackground=document.createElement("div");
-        itemImageBackground.id="image-background";
         NOTE_INVENTORY=document.createElement("div");
         NOTE_INVENTORY.id="note-inventory";
         NOTE_ZOOM=document.createElement("div");
@@ -100,9 +97,6 @@ function go_wall() {
             <button id="cdoor-left-closed" onclick='open_close_cabinet("left")'></button>
             <button id="cdoor-right-closed" onclick='open_close_cabinet("right")'></button>
         `;
-        //create all divs and its ids
-        itemImageBackground=document.createElement("div");
-        itemImageBackground.id="image-background";
 
         cabinet_left= 2;
         cabinet_right= 2;
@@ -113,8 +107,6 @@ function go_wall() {
             <button id="key" onclick='add_inventory(KEY_INVENTORY)'></button>
         `;
         //create all divs and its ids
-        itemImageBackground=document.createElement("div");
-        itemImageBackground.id="image-background";
         KEY_INVENTORY=document.createElement("div");
         KEY_INVENTORY.id="key-inventory";
         
@@ -228,8 +220,6 @@ function open_close_cabinet(side){
             cabinet_right=1;
             
              //create all divs and its ids
-            itemImageBackground=document.createElement("div");
-            itemImageBackground.id="image-background";
             NOTEBOOK_INVENTORY=document.createElement("div");
             NOTEBOOK_INVENTORY.id="notebook-inventory";
             NOTEBOOK_ZOOM=document.createElement("div");
@@ -281,8 +271,6 @@ function open_close_cabinet(side){
                 WALL.appendChild(RECEIPT);
 
                 //create all divs and its ids
-                itemImageBackground=document.createElement("div");
-                itemImageBackground.id="image-background";
                 RECEIPT_INVENTORY=document.createElement("div");
                 RECEIPT_INVENTORY.id="receipt-inventory";
                 RECEIPT_ZOOM=document.createElement("div");
