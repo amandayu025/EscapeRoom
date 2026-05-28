@@ -6,7 +6,7 @@
 It's a simple escape room web "game" <br>
 It was made with HTML, CSS and JS <br>
 I made all the scenary and objects, myself, with pixel art :D <br>
-This is a project made so i could learn some JS, so i took more time than it should and it's sadly poor, plus, it was the first time i committed through git in vscode :) <br>
+This is a project made so i could learn some JS, so it took more time than it should and the code it's sadly poor, plus, it was the first time i committed through git in vscode :) <br>
 
 <img width="800" height="500" alt="first screen" src="images/first_screen.png">
 
